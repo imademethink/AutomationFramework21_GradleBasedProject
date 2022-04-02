@@ -1,0 +1,61 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'com.music'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    // Only necessary for JUnit 3 and 4 tests
+    testCompileOnly 'junit:junit:4.12'
+    testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.3.1'
+
+    compile group: 'com.github.mkolisnyk', name: 'cucumber-runner', version: '1.0.8'
+    compile group: 'com.vimalselvam', name: 'cucumber-extentsreport', version: '3.0.0'
+    compile group: 'info.cukes', name: 'cucumber-core', version: '1.2.5'
+    compile group: 'commons-codec', name: 'commons-codec', version: '1.8'
+    compile group: 'info.cukes', name: 'cucumber-html', version: '0.2.3'
+    compile group: 'info.cukes', name: 'cucumber-java', version: '1.2.5'
+    testCompile group: 'info.cukes', name: 'cucumber-junit', version: '1.2.5'
+    providedCompile group: 'info.cukes', name: 'cucumber-jvm-deps', version: '1.0.5'
+    compile group: 'com.aventstack', name: 'extentreports', version: '3.0.6'
+    compile group: 'org.freemarker', name: 'freemarker', version: '2.3.23'
+    providedCompile group: 'info.cukes', name: 'gherkin', version: '2.12.2'
+    compile group: 'org.jsoup', name: 'jsoup', version: '1.8.3'
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
+    testCompile group: 'info.cukes', name: 'cucumber-picocontainer', version: '1.2.5'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.0'
+    compile group: 'org.apache.poi', name: 'poi', version: '4.1.0'
+    compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.31.1'
+    compile group: 'org.apache.commons', name: 'commons-email', version: '1.4'
+}
+
+test {
+    systemProperty "cucumber.options", System.properties.getProperty("cucumber.options")
+    useJUnitPlatform {}
+    testLogging {showStandardStreams = true}
+}
+
+//  create gradle + java project using command line - gradle init ---> options => 3 3 1 1
+//  create gradle + java project using intellij
+//  remove junit dependency
+//  add above dependency
+//  add test with useJUnitPlatform()  and testLogging {showStandardStreams = true}
+//  for provided compile - need to add plugin id 'war'
+//  after running a scenario check default reports under build folder
+//  to pass external parameter need to use systemProperty item in test task
+//  how to run
+//      command line                - gradle clean test   or gradle clean test -Dcucumber.options="--tags @dummy "
+//      using run configuration     - gradle config with/ without cucumber options
+//  check extentreports in usual target/html folder
+

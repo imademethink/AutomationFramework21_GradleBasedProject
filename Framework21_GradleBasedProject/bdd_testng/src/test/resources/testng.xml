@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Suite_TestNg" verbose="1">
+
+    <test name="Regression1">
+        <classes>
+            <class name="pkg_utility_fixtures.CommonSteps"/>
+            <class name="pkg_testrunner.TestRunnerFramework"/>
+        </classes>
+    </test>
+  
+</suite>
